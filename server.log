@@ -1,0 +1,17 @@
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project gcp-project-id-placeholder in us-central1
+DEBUG: Loading video_processing.py at 2025-12-16 21:24:59.959966. Moviepy version: 2.1.2
+Initiating Gemini client for project gcp-project-id-placeholder in us-central1
+INFO:     Will watch for changes in these directories: ['/app']
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+WARNING:  --reload-include and --reload-exclude have no effect unless watchfiles is installed.
+INFO:     Started reloader process [23225] using StatReload
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project gcp-project-id-placeholder in us-central1
+DEBUG: Loading video_processing.py at 2025-12-16 21:25:11.541367. Moviepy version: 2.1.2
+Initiating Gemini client for project gcp-project-id-placeholder in us-central1
+INFO:     Started server process [23322]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:mesop.server.server:Static folder enabled: /app/static
+INFO:     127.0.0.1:32920 - "GET /home HTTP/1.1" 200 OK
