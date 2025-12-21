@@ -62,3 +62,4 @@ terraform.rc
 ## MCP Servers
 drivectl-mcp.log
 .genkit/
+\n# Log files\n*.log\n\n# Dummy credentials\ndummy_credentials.json

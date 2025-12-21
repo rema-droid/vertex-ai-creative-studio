@@ -1,7 +1,8 @@
 
 
 import pytest
-from models.veo import text_to_video
+from models.veo import generate_video
+from models.requests import VideoGenerationRequest
 from config.veo_models import VEO_MODELS
 
 # Parametrize the test to run for each model defined in the configuration.
@@ -20,43 +21,28 @@ def test_veo_t2v_api_call(gcs_bucket_for_tests, model_config):
     prompt = "a happy dog running on a sunny beach"
     output_gcs = f"{gcs_bucket_for_tests}/integration_tests"
 
-    # --- Act ---
-    # Call the actual text_to_video function, which will make a real API call.
-    # The duration and other parameters are now pulled from the model's config.
-    operation_result = text_to_video(
-        model=model_config.version_id,
+    request = VideoGenerationRequest(
         prompt=prompt,
-        seed=42,
-        aspect_ratio=model_config.supported_aspect_ratios[0], # Use the first supported aspect ratio
-        sample_count=model_config.default_samples,
-        output_gcs=output_gcs,
-        enable_pr=model_config.supports_prompt_enhancement,
         duration_seconds=model_config.default_duration,
+        video_count=model_config.default_samples,
+        aspect_ratio=model_config.supported_aspect_ratios[0],
+        resolution=model_config.default_resolution,
+        enhance_prompt=model_config.supports_prompt_enhancement,
+        model_version_id=model_config.version_id,
+        person_generation="allow_all",
+        seed=42,
     )
 
+    # --- Act ---
+    video_uris, resolution = generate_video(request)
+
     # --- Assert ---
-    # Print the full response object for debugging purposes.
-    print(f"\n--- Full API Response for model {model_version} ---")
-    print(operation_result)
-    print("----------------------------------------------------")
+    assert video_uris is not None, "The API operation result should not be None."
+    assert len(video_uris) > 0, "The 'video_uris' list should not be empty."
+    assert resolution == model_config.default_resolution, "The resolution should match the request."
 
-    # Verify that the operation completed successfully and returned a valid response.
-    assert operation_result is not None, "The API operation result should not be None."
-    assert operation_result.get("done"), f"The 'done' flag in the operation should be True. Full response: {operation_result}"
+    for uri in video_uris:
+        assert uri.startswith(f"gs://{output_gcs}"), f"The video URI should be in the specified output bucket. Got {uri}"
 
-    # Explicitly check for a top-level error in the operation result.
-    if 'error' in operation_result:
-        pytest.fail(f"API returned a top-level error: {operation_result['error']}")
-
-    response_data = operation_result.get("response", {})
-    assert "videos" in response_data, f"The response should contain a 'videos' key. Full response: {operation_result}"
-
-    videos = response_data["videos"]
-    assert len(videos) > 0, "The 'videos' list should not be empty."
-
-    video_uri = videos[0].get("gcsUri")
-    assert video_uri is not None, "The video should have a 'gcsUri'."
-    assert video_uri.startswith(output_gcs), f"The video URI should be in the specified output bucket. Got {video_uri}"
-
-    print(f"\nIntegration test for model {model_version} PASSED. Video generated successfully at: {video_uri}")
+    print(f"\nIntegration test for model {model_config.version_id} PASSED. Video generated successfully at: {video_uris[0]}")
 
