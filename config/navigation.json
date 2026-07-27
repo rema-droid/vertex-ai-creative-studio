@@ -148,6 +148,15 @@
       "description": "Create a 'shop the look' experience from a model and clothing."
     },
     {
+      "id": 58,
+      "display": "Veo 3 Prompt Enhancement",
+      "icon": "movie_filter",
+      "route": "/veo3_prompt_enhancement",
+      "group": "workflows",
+      "mode": ["video"],
+      "description": "Enhance and optimize video prompts for Veo 3."
+    },
+    {
       "id": 57,
       "display": "Interior Design",
       "icon": "chair",

@@ -1,0 +1,209 @@
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:27:40.843241. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Will watch for changes in these directories: ['/app']
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+WARNING:  --reload-include and --reload-exclude have no effect unless watchfiles is installed.
+INFO:     Started reloader process [442550] using StatReload
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:28:00.164659. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Started server process [443640]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:mesop.server.server:Static folder enabled: /app/static
+INFO:     127.0.0.1:35144 - "GET /veo3_prompt_enhancement HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35144 - "GET /styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35158 - "GET /zone.js/bundles/zone.umd.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35162 - "GET /prod_bundle.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35162 - "POST /__ui__ HTTP/1.1" 200 OK
+{"timestamp": "2026-07-27 21:29:00,715", "level": "INFO", "message": "Page view: veo3_prompt_enhancement", "name": "genmedia.analytics", "event_type": "page_view", "page_name": "veo3_prompt_enhancement", "session_id": ""}
+INFO:genmedia.analytics:Page view: veo3_prompt_enhancement
+INFO:     127.0.0.1:35144 - "GET /__web-components-module__/components/svg_icon/svg_icon.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35162 - "GET /__web-components-module__/components/theme_manager/theme_manager.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38172 - "GET /veo3_prompt_enhancement HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38172 - "GET /styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38184 - "GET /zone.js/bundles/zone.umd.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38198 - "GET /prod_bundle.js HTTP/1.1" 200 OK
+{"timestamp": "2026-07-27 21:29:56,915", "level": "INFO", "message": "Page view: veo3_prompt_enhancement", "name": "genmedia.analytics", "event_type": "page_view", "page_name": "veo3_prompt_enhancement", "session_id": ""}
+INFO:genmedia.analytics:Page view: veo3_prompt_enhancement
+INFO:     127.0.0.1:38198 - "POST /__ui__ HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38198 - "GET /__web-components-module__/components/theme_manager/theme_manager.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38172 - "GET /__web-components-module__/components/svg_icon/svg_icon.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:38172 - "POST /__ui__ HTTP/1.1" 200 OK
+{"timestamp": "2026-07-27 21:30:01,783", "level": "INFO", "message": "Page view: veo3_prompt_enhancement", "name": "genmedia.analytics", "event_type": "page_view", "page_name": "veo3_prompt_enhancement", "session_id": ""}
+INFO:genmedia.analytics:Page view: veo3_prompt_enhancement
+{"timestamp": "2026-07-27 21:30:01,791", "level": "INFO", "message": "Page view: veo3_prompt_enhancement", "name": "genmedia.analytics", "event_type": "page_view", "page_name": "veo3_prompt_enhancement", "session_id": ""}
+INFO:genmedia.analytics:Page view: veo3_prompt_enhancement
+WARNING:  StatReload detected changes in 'test/test_veo_extension.py'. Reloading...
+INFO:     Shutting down
+ERROR:    Cancel 0 running task(s), timeout graceful shutdown exceeded
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [443640]
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:37:12.136220. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Started server process [522841]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'test/test_veo_negative_prompt.py'. Reloading...
+INFO:     Shutting down
+ERROR:    Cancel 0 running task(s), timeout graceful shutdown exceeded
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [522841]
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:39:53.259383. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Started server process [551175]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'test/test_veo_negative_prompt.py'. Reloading...
+INFO:     Shutting down
+ERROR:    Cancel 0 running task(s), timeout graceful shutdown exceeded
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [551175]
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:40:38.483603. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Started server process [560701]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'test/test_veo_negative_prompt.py'. Reloading...
+INFO:     Shutting down
+ERROR:    Cancel 0 running task(s), timeout graceful shutdown exceeded
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [560701]
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:41:58.438584. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Started server process [571125]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'test/test_veo_negative_prompt.py'. Reloading...
+INFO:     Shutting down
+ERROR:    Cancel 0 running task(s), timeout graceful shutdown exceeded
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [571125]
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:43:38.609073. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Started server process [581317]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'test/test_veo_negative_prompt.py'. Reloading...
+INFO:     Shutting down
+ERROR:    Cancel 0 running task(s), timeout graceful shutdown exceeded
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [581317]
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:44:48.300747. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Started server process [591288]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'test/test_veo_negative_prompt.py'. Reloading...
+INFO:     Shutting down
+ERROR:    Cancel 0 running task(s), timeout graceful shutdown exceeded
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [591288]
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:45:09.867807. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Started server process [593980]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'test/test_veo_negative_prompt.py'. Reloading...
+INFO:     Shutting down
+ERROR:    Cancel 0 running task(s), timeout graceful shutdown exceeded
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [593980]
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:46:11.386908. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Started server process [603951]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'test/test_veo_negative_prompt.py'. Reloading...
+INFO:     Shutting down
+ERROR:    Cancel 0 running task(s), timeout graceful shutdown exceeded
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [603951]
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:47:11.618625. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Started server process [613925]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'test/test_veo_negative_prompt.py'. Reloading...
+INFO:     Shutting down
+ERROR:    Cancel 0 running task(s), timeout graceful shutdown exceeded
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [613925]
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:48:18.785161. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Started server process [623896]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'pages/veo.py'. Reloading...
+INFO:     Shutting down
+ERROR:    Cancel 0 running task(s), timeout graceful shutdown exceeded
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [623896]
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:49:59.365306. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Started server process [640899]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  StatReload detected changes in 'test/test_veo_generation_flow.py'. Reloading...
+INFO:     Shutting down
+ERROR:    Cancel 0 running task(s), timeout graceful shutdown exceeded
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [640899]
+[FirebaseClient] - initiating firebase client with `(default)`
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: Loading video_processing.py at 2026-07-27 21:51:25.111027. Moviepy version: 2.1.2
+Initiating Gemini client for project dummy-project in us-central1
+DEBUG: retro_games loaded. PROJECT_ID=dummy-project
+INFO:     Started server process [652220]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.

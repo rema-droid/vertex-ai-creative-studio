@@ -60,6 +60,7 @@ from pages import selfie as selfie_page
 from pages import veo
 from pages import vto as vto_page
 from pages import welcome as welcome_page
+from pages import veo3_prompt_enhancement
 from pages.edit_images import content as edit_images_content
 from pages.library_v2 import page as library_v2_page
 from pages.test_character_consistency import page as test_character_consistency_page

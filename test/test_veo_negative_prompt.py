@@ -9,26 +9,40 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from pages.veo import on_click_veo
 from state.veo_state import PageState
 from state.state import AppState
-from common.metadata import MediaItem
-from models.requests import VideoGenerationRequest
 
-@patch('pages.veo.add_media_item_to_firestore')
-@patch('pages.veo.generate_video')
+@patch('pages.veo.requests.get')
+@patch('pages.veo.requests.post')
 @patch('mesop.state')
-def test_veo_negative_prompt_flow(mock_state, mock_generate_video, mock_add_media_item_to_firestore):
+def test_veo_negative_prompt_flow(mock_state, mock_post, mock_get):
     """
     Tests that the negative_prompt is correctly passed from the UI state
-    through the generation request and into the final metadata logging.
+    through the generation request HTTP payload.
     """
     # --- Arrange ---
     prompt = "a cinematic shot of a raccoon"
     negative_prompt = "text, watermark, signature"
 
-    # Mock the return value of the video generation
-    mock_generate_video.return_value = ("gs://fake-bucket/video.mp4", "1080p")
+    # Setup mocked responses for HTTP requests
+    mock_post_response = MagicMock()
+    mock_post_response.json.return_value = {"job_id": "test_job_123", "status": "pending"}
+    mock_post.return_value = mock_post_response
 
-    # Setup the mocked states that me.state() will return upon subsequent calls
-    mock_app_state = AppState(user_email="test_user@example.com")
+    mock_get_response = MagicMock()
+    mock_get_response.json.return_value = {
+        "job_id": "test_job_123",
+        "status": "complete",
+        "video_uris": ["gs://fake-bucket/video.mp4"]
+    }
+    mock_get.return_value = mock_get_response
+
+    # Setup the mocked AppState manually to avoid working outside request context
+    mock_app_state = MagicMock(spec=AppState)
+    mock_app_state.user_email = "test_user@example.com"
+    mock_app_state.current_page = "veo"
+    mock_app_state.session_id = "test_session_123"
+    mock_app_state.sidenav_open = False
+    mock_app_state.theme_mode = "dark"
+
     mock_page_state = PageState(
         veo_prompt_input=prompt,
         negative_prompt=negative_prompt,
@@ -41,9 +55,13 @@ def test_veo_negative_prompt_flow(mock_state, mock_generate_video, mock_add_medi
         auto_enhance_prompt=False
     )
 
-    # The on_click_veo function calls me.state() multiple times.
-    # We configure the mock to return the appropriate state object each time.
-    mock_state.side_effect = [mock_app_state, mock_page_state, mock_page_state, mock_page_state]
+    # Configure the mock to return the correct state based on requested class
+    def state_side_effect(state_class):
+        if state_class == AppState:
+            return mock_app_state
+        return mock_page_state
+
+    mock_state.side_effect = state_side_effect
 
     # --- Act ---
     # Call the event handler, which is a generator. We need to exhaust it.
@@ -51,19 +69,16 @@ def test_veo_negative_prompt_flow(mock_state, mock_generate_video, mock_add_medi
         pass
 
     # --- Assert ---
-    # 1. Assert that the video generation function was called correctly.
-    mock_generate_video.assert_called_once()
-    request_arg = mock_generate_video.call_args[0][0]
+    # 1. Assert that the POST request was sent to the generate endpoint
+    mock_post.assert_called_once()
+    post_kwargs = mock_post.call_args[1]
 
-    assert isinstance(request_arg, VideoGenerationRequest)
-    assert request_arg.prompt == prompt
-    assert request_arg.negative_prompt == negative_prompt
+    assert "json" in post_kwargs
+    payload = post_kwargs["json"]
+    assert payload["prompt"] == prompt
+    assert payload["negative_prompt"] == negative_prompt
 
-    # 2. Assert that the Firestore logging function was called with the correct data.
-    mock_add_media_item_to_firestore.assert_called_once()
-    media_item_arg = mock_add_media_item_to_firestore.call_args[0][0]
-
-    assert isinstance(media_item_arg, MediaItem)
-    assert media_item_arg.prompt == prompt
-    assert media_item_arg.negative_prompt == negative_prompt
-    assert media_item_arg.user_email == "test_user@example.com"
+    # 2. Assert that polling was performed using GET request
+    mock_get.assert_called_once()
+    get_args = mock_get.call_args[0]
+    assert "test_job_123" in get_args[0]
