@@ -1,3 +1,3 @@
-#!/bin/sh
-source .venv/bin/activate
-mesop --port $PORT main.py
+#!/bin/bash
+PORT=${PORT:-8080}
+uv run mesop --port $PORT main.py
