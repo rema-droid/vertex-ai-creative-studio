@@ -21,11 +21,11 @@ from components.imagen.generation_controls import generation_controls
 from components.imagen.image_output import image_output
 from components.imagen.modifier_controls import modifier_controls
 from components.page_scaffold import page_frame, page_scaffold
-from config.default import ABOUT_PAGE_CONTENT
+from config.default import ABOUT_PAGE_CONTENT, Default
 from state.imagen_state import PageState
 
 
-@me.page(path="/imagen", title="GenMedia Creative Studio - Imagen")
+@me.page(path="/imagen", title=f"{Default.APP_TITLE} - Imagen")
 def imagen_page():
     with page_scaffold(page_name="imagen"):  # pylint: disable=E1129:not-context-manager
         imagen_content(me.state(PageState))
@@ -37,7 +37,7 @@ def imagen_content(app_state: me.state):
 
     if state.info_dialog_open:
         with dialog(is_open=state.info_dialog_open):  # pylint: disable=not-context-manager
-            me.text("About Imagen Creative Studio", type="headline-6")
+            me.text(f"About Imagen {Default.BRAND_NAME}", type="headline-6")
             me.markdown(ABOUT_PAGE_CONTENT["sections"][0]["description"])
             me.divider()
             me.text("Current Settings", type="headline-6")
@@ -49,27 +49,31 @@ def imagen_content(app_state: me.state):
                 me.button("Close", on_click=close_info_dialog, type="flat")
 
     with page_frame():  # pylint: disable=not-context-manager
-            header(
-                "Imagen Creative Studio",
-                "image",
-                show_info_button=True,
-                on_info_click=open_info_dialog,
-            )
+        header(
+            f"Imagen - {Default.APP_TITLE}",
+            "image",
+            show_info_button=True,
+            on_info_click=open_info_dialog,
+        )
+        with me.box(
+            style=me.Style(
+                width="100%",
+                display="flex",
+                flex_direction="column",
+                align_items="center",
+            ),
+        ):
             with me.box(
                 style=me.Style(
-                    width="100%", display="flex", flex_direction="column", align_items="center",
+                    width="80vw",
+                    display="flex",
+                    flex_direction="column",
                 ),
             ):
-                with me.box(
-                    style=me.Style(
-                        width="80vw",
-                        display="flex", flex_direction="column"
-                    ),
-                ):
-                    generation_controls()
-                    modifier_controls()
-                    advanced_controls()
-            image_output()
+                generation_controls()
+                modifier_controls()
+                advanced_controls()
+        image_output()
 
     with dialog(is_open=state.show_dialog):  # pylint: disable=not-context-manager
         me.text(

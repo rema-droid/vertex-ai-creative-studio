@@ -15,10 +15,10 @@
 import json
 import os
 from dataclasses import dataclass, field
-from typing import List, Optional, TypedDict
+from typing import TypedDict
 
 from dotenv import load_dotenv
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 load_dotenv(override=True)
 
@@ -35,28 +35,35 @@ class NavItem(BaseModel):
     id: int
     display: str
     icon: str
-    route: Optional[str] = None
-    group: Optional[str] = None
-    align: Optional[str] = None
-    feature_flag: Optional[str] = None
-    feature_flag_not: Optional[str] = None
-    description: Optional[str] = None
-    video_url: Optional[str] = None
-    video_object_position: Optional[str] = None
+    route: str | None = None
+    group: str | None = None
+    align: str | None = None
+    feature_flag: str | None = None
+    feature_flag_not: str | None = None
+    description: str | None = None
+    video_url: str | None = None
+    video_object_position: str | None = None
 
 
 class NavConfig(BaseModel):
-    pages: List[NavItem]
+    pages: list[NavItem]
 
 
 @dataclass
 class Default:
     """Defaults class"""
 
-    VERSION: str = "1.3.16" # Gemini Writers Studio config
+    VERSION: str = "1.3.16"  # Gemini Writers Studio config
     APP_ENV: str = os.environ.get("APP_ENV", "")
+    APP_TITLE: str = os.environ.get("APP_TITLE", "GenMedia Creative Studio")
+    BRAND_NAME: str = os.environ.get("BRAND_NAME", "GENMEDIA STUDIO")
+    APP_SUBTITLE: str = os.environ.get(
+        "APP_SUBTITLE",
+        "Fuel your creativity with Google Cloud Vertex AI's generative media models and custom workflows.",
+    )
     API_BASE_URL: str = os.environ.get(
-        "API_BASE_URL", f"http://localhost:{os.environ.get('PORT', '8080')}"
+        "API_BASE_URL",
+        f"http://localhost:{os.environ.get('PORT', '8080')}",
     )
 
     SERVICE_ACCOUNT_EMAIL: str = os.environ.get("SERVICE_ACCOUNT_EMAIL")
@@ -67,20 +74,24 @@ class Default:
     MODEL_ID: str = os.environ.get("MODEL_ID", "gemini-2.5-flash")
     INIT_VERTEX: bool = True
     GEMINI_IMAGE_GEN_MODEL: str = os.environ.get(
-        "GEMINI_IMAGE_GEN_MODEL", "gemini-2.5-flash-image",
+        "GEMINI_IMAGE_GEN_MODEL",
+        "gemini-2.5-flash-image",
     )
     GEMINI_IMAGE_GEN_LOCATION: str = os.environ.get(
-        "GEMINI_IMAGE_GEN_LOCATION", "global",
+        "GEMINI_IMAGE_GEN_LOCATION",
+        "global",
     )
-    GEMINI_IMAGE_GEN_API_BASE_URL: Optional[str] = os.environ.get(
-        "GEMINI_IMAGE_GEN_API_BASE_URL"
+    GEMINI_IMAGE_GEN_API_BASE_URL: str | None = os.environ.get(
+        "GEMINI_IMAGE_GEN_API_BASE_URL",
     )
 
     GEMINI_AUDIO_ANALYSIS_MODEL_ID: str = os.environ.get(
-        "GEMINI_AUDIO_ANALYSIS_MODEL_ID", "gemini-2.5-flash",
+        "GEMINI_AUDIO_ANALYSIS_MODEL_ID",
+        "gemini-2.5-flash",
     )
     GEMINI_WRITERS_WORKSHOP_MODEL_ID: str = os.environ.get(
-        "GEMINI_WRITERS_WORKSHOP_MODEL_ID", MODEL_ID
+        "GEMINI_WRITERS_WORKSHOP_MODEL_ID",
+        MODEL_ID,
     )
 
     # Collections
@@ -107,7 +118,9 @@ class Default:
     VEO_MODEL_ID: str = os.environ.get("VEO_MODEL_ID", "veo-3.1-fast-generate-001")
     VEO_PROJECT_ID: str = os.environ.get("VEO_PROJECT_ID", PROJECT_ID)
 
-    VEO_EXP_MODEL_ID: str = os.environ.get("VEO_EXP_MODEL_ID", "veo-3.1-generate-preview")
+    VEO_EXP_MODEL_ID: str = os.environ.get(
+        "VEO_EXP_MODEL_ID", "veo-3.1-generate-preview"
+    )
     VEO_EXP_FAST_MODEL_ID: str = os.environ.get(
         "VEO_EXP_FAST_MODEL_ID",
         "veo-3.1-fast-generate-preview",
@@ -118,10 +131,12 @@ class Default:
     VTO_LOCATION: str = os.environ.get("VTO_LOCATION", "us-central1")
     VTO_MODEL_ID: str = os.environ.get("VTO_MODEL_ID", "virtual-try-on-preview-08-04")
     GENMEDIA_VTO_MODEL_COLLECTION_NAME: str = os.environ.get(
-        "GENMEDIA_VTO_MODEL_COLLECTION_NAME", "genmedia-vto-model",
+        "GENMEDIA_VTO_MODEL_COLLECTION_NAME",
+        "genmedia-vto-model",
     )
     GENMEDIA_VTO_CATALOG_COLLECTION_NAME: str = os.environ.get(
-        "GENMEDIA_VTO_CATALOG_COLLECTION_NAME", "genmedia-vto-catalog",
+        "GENMEDIA_VTO_CATALOG_COLLECTION_NAME",
+        "genmedia-vto-catalog",
     )
 
     # Temperatures for Character Consistency Workflow
@@ -137,10 +152,12 @@ class Default:
     # Character Consistency
     CHARACTER_CONSISTENCY_IMAGEN_MODEL: str = "imagen-3.0-capability-001"
     CHARACTER_CONSISTENCY_VEO_MODEL: str = os.environ.get(
-        "CHARACTER_CONSISTENCY_VEO_MODEL", "veo-3.0-fast-generate-001"
+        "CHARACTER_CONSISTENCY_VEO_MODEL",
+        "veo-3.0-fast-generate-001",
     )
     CHARACTER_CONSISTENCY_GEMINI_MODEL: str = os.environ.get(
-        "CHARACTER_CONSISTENCY_GEMINI_MODEL", MODEL_ID
+        "CHARACTER_CONSISTENCY_GEMINI_MODEL",
+        MODEL_ID,
     )
 
     # Lyria
@@ -164,10 +181,12 @@ class Default:
     )
 
     IMAGEN_GENERATED_SUBFOLDER: str = os.environ.get(
-        "IMAGEN_GENERATED_SUBFOLDER", "generated_images"
+        "IMAGEN_GENERATED_SUBFOLDER",
+        "generated_images",
     )
     IMAGEN_EDITED_SUBFOLDER: str = os.environ.get(
-        "IMAGEN_EDITED_SUBFOLDER", "edited_images"
+        "IMAGEN_EDITED_SUBFOLDER",
+        "edited_images",
     )
 
     IMAGEN_PROMPTS_JSON = "prompts/imagen_prompts.json"
@@ -186,7 +205,7 @@ class Default:
 
 
 def get_welcome_page_config():
-    with open("config/navigation.json", "r") as f:
+    with open("config/navigation.json") as f:
         data = json.load(f)
 
     # This will raise a validation error if the JSON is malformed
@@ -209,7 +228,7 @@ def get_welcome_page_config():
 
 
 def load_about_page_config():
-    env = os.environ.get("APP_ENV") # e.g., 'local', 'dev', 'prod'
+    env = os.environ.get("APP_ENV")  # e.g., 'local', 'dev', 'prod'
     env_config_path = f"config/about_content.{env}.json"
     default_config_path = "config/about_content.json"
 
@@ -223,8 +242,17 @@ def load_about_page_config():
         return None
 
     try:
-        with open(config_path, "r") as f:
-            content = json.load(f)
+        with open(config_path) as f:
+            content_str = f.read()
+            # Replace hardcoded branding dynamically with the configured values
+            content_str = content_str.replace(
+                "GenMedia Creative Studio",
+                os.environ.get("APP_TITLE", "GenMedia Creative Studio"),
+            )
+            content_str = content_str.replace(
+                "GENMEDIA STUDIO", os.environ.get("BRAND_NAME", "GENMEDIA STUDIO")
+            )
+            content = json.loads(content_str)
     except (FileNotFoundError, json.JSONDecodeError):
         return None
 

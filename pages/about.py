@@ -17,7 +17,7 @@ import mesop as me
 from components.header import header
 from components.page_scaffold import page_frame, page_scaffold
 from components.pill import pill
-from config.default import ABOUT_PAGE_CONTENT
+from config.default import ABOUT_PAGE_CONTENT, Default
 
 
 def render_section(section_data: dict):
@@ -30,11 +30,11 @@ def render_section(section_data: dict):
             align_items="center",
             margin=me.Margin(top=24, bottom=24),
             border=me.Border.all(
-                me.BorderSide(style="solid", width=1, color=me.theme_var("outline"))
+                me.BorderSide(style="solid", width=1, color=me.theme_var("outline")),
             ),
             padding=me.Padding.all(16),
             border_radius=12,
-        )
+        ),
     ):
         # Text content on the left
         with me.box(style=me.Style(flex_grow=1)):
@@ -80,13 +80,13 @@ def about_page_content():
                 render_section(section)
         else:
             me.text(
-                "Could not load the About page content. Please ensure 'config/about_content.json' is valid."
+                "Could not load the About page content. Please ensure 'config/about_content.json' is valid.",
             )
 
 
 @me.page(
     path="/about",
-    title="About - GenMedia Creative Studio",
+    title=f"About - {Default.APP_TITLE}",
 )
 def page():
     with page_scaffold(page_name="about"):  # pylint: disable=E1129:not-context-manager
