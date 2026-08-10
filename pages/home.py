@@ -14,20 +14,19 @@
 """Welcome page."""
 
 from collections import defaultdict
-from typing import Dict, List
 
 import mesop as me
 
 from components.header import header
 from components.interactive_tile.interactive_tile import interactive_tile
 from components.page_scaffold import page_frame, page_scaffold
-from config.default import get_welcome_page_config
+from config.default import Default, get_welcome_page_config
 from state.state import AppState
 
 
 @me.page(
     path="/home",
-    title="GenMedia Creative Studio - Google Cloud Vertex AI",
+    title=f"{Default.APP_TITLE} - Google Cloud Vertex AI",
     security_policy=me.SecurityPolicy(
         dangerously_disable_trusted_types=True,
     ),
@@ -59,16 +58,14 @@ def home_page_content(app_state: me.state):  # pylint: disable=unused-argument
             background=me.theme_var("background"),
             display="flex",
             flex_direction="column",
-        )
+        ),
     ):
-        header("GenMedia Creative Studio", "home")
+        header(Default.APP_TITLE, "home")
 
         # Group pages by the "group" key
-        grouped_pages: Dict[str, List[Dict]] = defaultdict(list)
+        grouped_pages: dict[str, list[dict]] = defaultdict(list)
         pages_to_display = [
-            page
-            for page in get_welcome_page_config()
-            if page.get("display") != "Home"
+            page for page in get_welcome_page_config() if page.get("display") != "Home"
         ]
 
         for page_data in pages_to_display:
@@ -79,12 +76,10 @@ def home_page_content(app_state: me.state):  # pylint: disable=unused-argument
         # Render each group based on GROUP_ORDER
         for group_name in GROUP_ORDER:
             items_in_group = grouped_pages.get(
-                group_name
+                group_name,
             )  # Get items for the current group
 
-            if (
-                not items_in_group
-            ):  # Skip if group is not in data or has no items
+            if not items_in_group:  # Skip if group is not in data or has no items
                 continue
 
             # Group Title
@@ -114,10 +109,13 @@ def home_page_content(app_state: me.state):  # pylint: disable=unused-argument
                     icon = page_data.get("icon", "broken_image")
                     display_name = page_data.get("display", "Unnamed Page")
                     description = page_data.get(
-                        "description", "Explore this capability."
+                        "description",
+                        "Explore this capability.",
                     )
                     video_url = page_data.get("video_url", "")
-                    video_object_position = page_data.get("video_object_position", "center")
+                    video_object_position = page_data.get(
+                        "video_object_position", "center"
+                    )
 
                     interactive_tile(
                         label=display_name,

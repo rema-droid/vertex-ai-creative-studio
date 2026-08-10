@@ -17,9 +17,10 @@ import json
 import mesop as me
 
 from common.analytics import log_page_view
-from components.welcome_hero.welcome_hero import welcome_hero
 from components.page_scaffold import on_theme_load
 from components.theme_manager.theme_manager import theme_manager
+from components.welcome_hero.welcome_hero import welcome_hero
+from config.default import Default
 from state.state import AppState
 
 
@@ -36,7 +37,7 @@ def on_tile_click(e: me.WebEvent):
 
 @me.page(
     path="/welcome",
-    title="Welcome - GenMedia Creative Studio",
+    title=f"Welcome - {Default.APP_TITLE}",
 )
 def page():
     """Define the Mesop page route for the welcome page."""
@@ -55,8 +56,8 @@ def page():
     ]
 
     welcome_hero(
-        title="GenMedia Creative Studio",
-        subtitle="Fuel your creativity with Google Cloud Vertex AI's generative media models and custom workflows.",
+        title=Default.APP_TITLE,
+        subtitle=Default.APP_SUBTITLE,
         # video_url="https://deepmind.google/api/blob/website/media/veo__cover_s0RKXWX.mp4", # Veo 2.0 backup
         video_url="https://storage.googleapis.com/gdm-deepmind-com-prod-public/media/media/veo__page-cover-1_hcTy7l3.mp4",
         tiles=json.dumps(tiles_data),
